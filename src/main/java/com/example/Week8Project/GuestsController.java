@@ -7,18 +7,26 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/book")
 public class GuestsController {
     @Autowired
     GuestsRepository guestsRepo;
 
-    @GetMapping
-    public List<Guests> getAllBooking() {
+    @Autowired
+    TablesRepository tablesRepo;
+
+
+    @RequestMapping(value = "/book",method = RequestMethod.GET)
+    public List<Guests> getAllGuests(){
         return guestsRepo.findAll();
     }
 
-    @PostMapping
-    public Guests addGuest(@RequestBody @Valid Guests guests) {
+    @RequestMapping(value = "/available",method = RequestMethod.GET)
+    public List<Tables> getAllTablesAvailable(){
+        return tablesRepo.findAll();
+    }
+
+    @RequestMapping(value = "/book",method = RequestMethod.POST)
+    public Guests addGuest(@RequestBody @Valid Guests guests){
         return guestsRepo.save(guests);
     }
 

@@ -11,6 +11,7 @@ public class Guests {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer guestNum;
     private String firstName;
     private String lastName;
     private Integer numInParty;
@@ -41,5 +42,12 @@ public class Guests {
 
     public void setNumInParty(Integer numInParty) {
         this.numInParty = numInParty;
+    }
+    public Integer getGuestNum() {
+        return guestNum;
+    }
+
+    public void setGuestNum(Integer guestNum) {
+        this.guestNum = guestNum;
     }
 }
